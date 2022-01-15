@@ -1,10 +1,9 @@
 import './comment.css'
-import Replie from './replies'
-export default function Comment ({User,Date,Content,Votes,Avatar, replies}){
-
+export default function Replie ({User,Date,Content,Votes,Avatar,replyingTo}){
 return(
-    <>
-    <div className="comment">
+    <div className="container-replie">
+
+        <div className="comment replie">
 
         <div className="top-comment">
             <img src={Avatar} alt="Avatar" />
@@ -13,7 +12,7 @@ return(
         </div>
 
         <div className="content-comment">
-            <p>{Content}</p>
+            <p><span>@{replyingTo} </span>{Content}</p>
         </div>
 
         <div className="vote-comment">
@@ -29,28 +28,9 @@ return(
             <img src="./images/icon-reply.svg" alt="Reply Icon" />
             <h3>Reply</h3>
         </div>
+        </div>
+
     </div>
-    <div className="replies">
 
-    {replies
-    ? replies.map(com=>{
-        return(
-
-            <Replie
-                key={com.id}
-                User={com.user.username}
-                Date={com.createdAt}
-                Content={com.content}
-                Votes={com.score}
-                replyingTo={com.replyingTo}
-                Avatar={com.user.image.webp}
-            />
-
-        )}
-        )
-    : ''
-    }
-    </div>
-    </>
 )
 }

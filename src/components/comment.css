@@ -6,6 +6,7 @@
     margin-top: 30px;
     padding: 14px;
     border-radius: 6px;
+    position: relative;
 }
 
 .top-comment{
@@ -28,4 +29,69 @@ h5{
     font-size: 18px;
     font-weight: 300;
     color: var(--Grayish-Blue);
+}
+.vote-comment{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 16px;
+}
+
+.vote-container{
+    display: flex;
+    align-items: center;
+    background-color: var(--Very-light-gray);
+    border-radius: 8px;
+    padding: 2px 14px;
+}
+.vote-container button{
+    border: none;
+    font-size: 18px;
+    font-weight: 800;
+    color: hsl(242deg 47% 86%);
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.vote-container button:nth-child(3){
+    font-size: 32px;
+    font-weight: 500;
+}
+h2{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Moderate-blue);
+    padding: 0 18px;
+}
+
+.reply{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    right: 16px;
+    bottom: 22px;
+    cursor: pointer;
+}
+
+h3{
+    font-size: 17px;
+    color: var(--Moderate-blue);
+    font-weight: 500;
+}
+.replie{
+    width: 94%;
+    margin-top: 0px;
+
+}
+
+.container-replie{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+span{
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    color:  var(--Moderate-blue);
 }
