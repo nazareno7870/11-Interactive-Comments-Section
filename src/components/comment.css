@@ -182,3 +182,14 @@ span{
 .modal-container button:last-child{
     background-color: var(--Soft-Red);
 }
+.top-comment p{
+    background-color: var(--Moderate-blue);
+    color: white;
+    font-size: 14px;
+    padding: 3px 8px;
+    line-height: 100%;
+    margin-left: -6px;
+    margin-right: 20px;
+    border-radius: 3px;
+
+}

@@ -130,6 +130,7 @@ return(
             <div className="top-comment">
                 <img src={Avatar} alt="Avatar" />
                 <h4>{User}</h4>
+                {User === user.username ? <p>you</p> : <></>}
                 <h5>{Date}</h5>
             </div>
 
