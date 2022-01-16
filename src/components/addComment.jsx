@@ -8,14 +8,13 @@ import Context from '../context/StaticContext'
 
 export default function AddComment ({}){
     const [newComment, setNewComment] = useState('');
-    const {comments,setComments,user} = useContext(Context)
+    const {comments,setComments,user,nextId, setnextId} = useContext(Context)
     const handleSubmit = (e)=>{
-        const newId = Math.random()*100
         e.preventDefault()
         const addComment ={
             content:newComment,
             createdAt: "Today",
-            id:newId,
+            id:nextId,
             replies:[],
             score:0,
             user:{
@@ -26,6 +25,7 @@ export default function AddComment ({}){
                 username:user.username
             }
         }
+        setnextId(nextId+1)
         setComments([...comments,addComment])
         setNewComment('')
     }

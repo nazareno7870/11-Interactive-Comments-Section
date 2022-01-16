@@ -1,12 +1,19 @@
 import './comment.css'
 import Replie from './replies'
 import { useContext,useState } from 'react'
-import Context, { CommentsContextProvider } from '../context/StaticContext'
+import Context from '../context/StaticContext'
 import AddReplie from './addReplie'
+import EditComment from './editComment'
 
 export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
     const {user} = useContext(Context)
     const [replie, setreplie] = useState(false);
+
+    const [edit, setedit] = useState(false)
+
+    const handleShowEditForm = ()=>{
+        setedit(!edit)
+    }
 
     const handleShowReplieForm = ()=>{
         setreplie(!replie)
@@ -14,7 +21,7 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
     
     return(
     <>
-    <div id={Id} className="comment">
+    <div id={Id} className={"comment "+!edit}>
 
         <div className="top-comment">
             <img src={Avatar} alt="Avatar" />
@@ -36,7 +43,6 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
         </div>
 
 
-
             {User === user.username
             ?<> 
                 <div className="delete-edit">
@@ -44,7 +50,7 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
                         <img src="./images/icon-delete.svg" alt="Reply Icon" />
                         <h3>Delete</h3>
                     </div>
-                    <div className="edit">
+                    <div className="edit" onClick={handleShowEditForm}>
                         <img src="./images/icon-edit.svg" alt="Reply Icon" />
                         <h3>Edit</h3>
                     </div>
@@ -58,7 +64,19 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
             </>}
 
     </div>
-    
+    {User === user.username
+    ? <EditComment
+        Id={Id}
+        User={User}
+        Date={Date}
+        Content={Content}
+        Votes={Votes}
+        Avatar={Avatar}
+        Visibility={edit}
+        setedit={setedit}
+        />
+    :<></>
+    }
     <AddReplie 
     Visibility={replie}
     Id={Id}

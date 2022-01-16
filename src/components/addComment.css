@@ -35,7 +35,7 @@ textarea::placeholder{
     bottom: 27px;
     left:22px;
 }
-.form-addComment button{
+.form-addComment button,.comment>form> button{
     background-color: var(--Moderate-blue);
     margin-top: 16px;
     border: none;
@@ -46,4 +46,12 @@ textarea::placeholder{
     color: var(--White);
     border-radius: 6px;
     cursor: pointer;
+}
+.comment>form> button{
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+}
+.comment.false{
+    display: none;
 }
