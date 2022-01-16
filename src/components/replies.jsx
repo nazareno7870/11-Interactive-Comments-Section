@@ -1,5 +1,10 @@
 import './comment.css'
+import { useContext } from 'react'
+import Context from '../context/StaticContext'
+
 export default function Replie ({User,Date,Content,Votes,Avatar,replyingTo}){
+const {user} = useContext(Context)
+
 return(
     <div className="container-replie">
 
@@ -24,10 +29,26 @@ return(
 
         </div>
 
-        <div className="reply">
-            <img src="./images/icon-reply.svg" alt="Reply Icon" />
-            <h3>Reply</h3>
-        </div>
+        {User === user.username
+            ?<> 
+                <div className="delete-edit">
+                    <div className="delete">
+                        <img src="./images/icon-delete.svg" alt="Reply Icon" />
+                        <h3>Delete</h3>
+                    </div>
+                    <div className="edit">
+                        <img src="./images/icon-edit.svg" alt="Reply Icon" />
+                        <h3>Edit</h3>
+                    </div>
+                </div>
+             </>
+            :<>
+                <div className="reply">
+                    <img src="./images/icon-reply.svg" alt="Reply Icon" />
+                    <h3>Reply</h3>
+                </div>
+            </>}
+            
         </div>
 
     </div>
