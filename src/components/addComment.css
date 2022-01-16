@@ -35,7 +35,7 @@ textarea::placeholder{
     bottom: 27px;
     left:22px;
 }
-.form-addComment button,.comment>form> button{
+.form-addComment button,.content-comment> button{
     background-color: var(--Moderate-blue);
     margin-top: 16px;
     border: none;
@@ -47,7 +47,7 @@ textarea::placeholder{
     border-radius: 6px;
     cursor: pointer;
 }
-.comment>form> button{
+.content-comment> button{
     position: absolute;
     right: 14px;
     bottom: 14px;
@@ -57,4 +57,23 @@ textarea::placeholder{
 }
 .container-replie.false{
     display: none;
+}
+@media (min-width: 800px) {
+   .form-addComment{
+       flex-direction: row;
+       align-items: flex-start;
+   }
+   .form-addComment img{
+    width: 32px;
+    position: absolute;
+    top: 20px;
+    left:20px;
+}
+textarea{
+    margin-left: 50px;
+    margin-right: 12px;
+}
+.form-addComment button{
+    margin-top: 2px;
+}
 }

@@ -126,46 +126,47 @@ return(
         <div id={Id} className={"container-replie "+!edit}>
 
             <div className="comment replie">
+                <div className="coment-container">
+                    <div className="top-comment">
+                        <img src={Avatar} alt="Avatar" />
+                        <h4>{User}</h4>
+                        {User === user.username ? <p>you</p> : <></>}
+                        <h5>{Date}</h5>
+                    </div>
 
-            <div className="top-comment">
-                <img src={Avatar} alt="Avatar" />
-                <h4>{User}</h4>
-                {User === user.username ? <p>you</p> : <></>}
-                <h5>{Date}</h5>
-            </div>
-
-            <div className="content-comment">
-                <p><span>@{replyingTo} </span>{Content}</p>
-            </div>
-
-            <div className="vote-comment">
-                <div className="vote-container">
-                <button onClick={handleAddVote}>+</button>
-                <h2>{vote}</h2>
-                <button onClick={handleDiscVote}>-</button>
+                    <div className="content-comment">
+                        <p><span>@{replyingTo} </span>{Content}</p>
+                    </div>
                 </div>
 
-            </div>
+                <div className="vote-comment">
+                    <div className="vote-container">
+                    <button onClick={handleAddVote}>+</button>
+                    <h2>{vote}</h2>
+                    <button onClick={handleDiscVote}>-</button>
+                    </div>
 
-            {User === user.username
-                ?<> 
-                    <div className="delete-edit">
-                        <div className="delete" onClick={e=> setshowModalDelete(!showModalDelete)}>
-                            <img src="./images/icon-delete.svg" alt="Reply Icon" />
-                            <h3>Delete</h3>
+                </div>
+
+                {User === user.username
+                    ?<> 
+                        <div className="delete-edit">
+                            <div className="delete" onClick={e=> setshowModalDelete(!showModalDelete)}>
+                                <img src="./images/icon-delete.svg" alt="Reply Icon" />
+                                <h3>Delete</h3>
+                            </div>
+                            <div className="edit" onClick={handleShowEditForm}>
+                                <img src="./images/icon-edit.svg" alt="Reply Icon" />
+                                <h3>Edit</h3>
+                            </div>
                         </div>
-                        <div className="edit" onClick={handleShowEditForm}>
-                            <img src="./images/icon-edit.svg" alt="Reply Icon" />
-                            <h3>Edit</h3>
+                    </>
+                    :<>
+                        <div className="reply" onClick={handleShowReplieForm}>
+                            <img src="./images/icon-reply.svg" alt="Reply Icon" />
+                            <h3>Reply</h3>
                         </div>
-                    </div>
-                </>
-                :<>
-                    <div className="reply" onClick={handleShowReplieForm}>
-                        <img src="./images/icon-reply.svg" alt="Reply Icon" />
-                        <h3>Reply</h3>
-                    </div>
-                </>}
+                    </>}
                 
             </div>
 

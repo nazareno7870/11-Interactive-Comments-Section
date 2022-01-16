@@ -1,5 +1,6 @@
 import { useContext,useState } from 'react'
 import './addComment.css'
+import './comment.css'
 import Context from '../context/StaticContext'
 
 export default function EditReply ({Id,User,Date,Content,Votes,Avatar,Visibility,setedit,replyingTo,CommentId}){
@@ -43,18 +44,18 @@ export default function EditReply ({Id,User,Date,Content,Votes,Avatar,Visibility
     <div id={Id} className={"container-replie "+Visibility}>
 
         <div className="comment replie">
+            <div className="coment-container">
+                <div className="top-comment">
+                    <img src={Avatar} alt="Avatar" />
+                    <h4>{User}</h4>
+                    <h5>{Date}</h5>
+                </div>
 
-        <div className="top-comment">
-            <img src={Avatar} alt="Avatar" />
-            <h4>{User}</h4>
-            <h5>{Date}</h5>
-        </div>
-
-        <form className="content-comment" onSubmit={handleUpdateReply}>
-                <textarea value={newContent} onChange={e=>setnewContent(e.target.value)}></textarea>
-                <button>UPDATE</button>
-        </form>
-
+                <form className="content-comment" onSubmit={handleUpdateReply}>
+                        <textarea value={newContent} onChange={e=>setnewContent(e.target.value)}></textarea>
+                        <button>UPDATE</button>
+                </form>
+            </div>
         <div className="vote-comment">
             <div className="vote-container">
                 <button>+</button>

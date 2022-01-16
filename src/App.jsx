@@ -13,7 +13,7 @@ function App() {
   window.localStorage.setItem('user',JSON.stringify(user))
 
   return (
-    <>
+    <div className='container'>
       { comments
       ? comments.map(com =>{
         return(
@@ -41,7 +41,7 @@ function App() {
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
         Coded by <a href="https://github.com/nazareno7870">Nazareno del Río</a>.
       </div>
-    </>
+    </div>
   )
 }
 

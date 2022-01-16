@@ -26,7 +26,7 @@ export default function EditComment ({Id,User,Date,Content,Votes,Avatar,Visibili
 
     return(    
     <div id={Id} className={"comment "+Visibility}>
-
+        <div className="coment-container">
     <div className="top-comment">
         <img src={Avatar} alt="Avatar" />
         <h4>{User}</h4>
@@ -37,7 +37,7 @@ export default function EditComment ({Id,User,Date,Content,Votes,Avatar,Visibili
         <textarea value={newContent} onChange={e=>setnewContent(e.target.value)}></textarea>
         <button>UPDATE</button>
     </form>
-
+    </div>
     <div className="vote-comment">
         <div className="vote-container">
             <button>+</button>

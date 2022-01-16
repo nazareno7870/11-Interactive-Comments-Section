@@ -88,17 +88,19 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
     return(
     <>
     <div id={Id} className={"comment "+!edit}>
+        <div className="coment-container">
+            <div className="top-comment">
+                <img src={Avatar} alt="Avatar" />
+                <h4>{User}</h4>
+                {User === user.username ? <p>you</p> : <></>}
+                <h5>{Date}</h5>
+            </div>
 
-        <div className="top-comment">
-            <img src={Avatar} alt="Avatar" />
-            <h4>{User}</h4>
-            {User === user.username ? <p>you</p> : <></>}
-            <h5>{Date}</h5>
+            <div className="content-comment">
+                <p>{Content}</p>
+            </div>
         </div>
 
-        <div className="content-comment">
-            <p>{Content}</p>
-        </div>
 
         <div className="vote-comment">
             <div className="vote-container">
