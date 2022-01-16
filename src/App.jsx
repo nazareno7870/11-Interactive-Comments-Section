@@ -6,8 +6,11 @@ import getState from '../services/getState'
 import Context from './context/StaticContext'
 
 function App() {
-  const {comments,setComments,user} = useContext(Context)
+  const {comments,user} = useContext(Context)
   getState()
+
+  window.localStorage.setItem('comments',JSON.stringify(comments))
+  window.localStorage.setItem('user',JSON.stringify(user))
 
   return (
     <>

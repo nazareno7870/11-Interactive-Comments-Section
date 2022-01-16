@@ -3,7 +3,7 @@ import './addComment.css'
 import Context from '../context/StaticContext'
 
 export default function EditComment ({Id,User,Date,Content,Votes,Avatar,Visibility,setedit}){
-    const {comments,setComments,user,nextId, setnextId} = useContext(Context)
+    const {comments,setComments} = useContext(Context)
     const [newContent, setnewContent] = useState(Content)
 
     const handleUpdateComment = (e)=>{

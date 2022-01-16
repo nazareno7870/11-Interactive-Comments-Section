@@ -4,7 +4,7 @@ import Context from '../context/StaticContext'
 
 export default function EditReply ({Id,User,Date,Content,Votes,Avatar,Visibility,setedit,replyingTo,CommentId}){
     
-    const {comments,setComments,user,nextId, setnextId} = useContext(Context)
+    const {comments,setComments} = useContext(Context)
     const [newContent, setnewContent] = useState(Content)
 
     const handleUpdateReply = (e)=>{

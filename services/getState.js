@@ -3,6 +3,8 @@ import Context from "../src/context/StaticContext";
 
 export default function getState (){
     const {setComments,setuser} = useContext(Context)
+    const commentStorage = window.localStorage.getItem('comments')
+    const userStorage = window.localStorage.getItem('user')
 
     useEffect(() => {
         
@@ -14,8 +16,12 @@ export default function getState (){
                 setuser(data.currentUser)
             })
         }
-        
-        fetchData()
+        if(commentStorage === null){
+            fetchData()
+        }else{
+            setComments(JSON.parse(commentStorage))
+            setuser(JSON.parse(userStorage))
+        }
     }, [])
 
 }
