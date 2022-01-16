@@ -89,6 +89,7 @@ h3{
     flex-direction: column;
     align-items: flex-end;
 }
+
 span{
     cursor: pointer;
     font-weight: 800;

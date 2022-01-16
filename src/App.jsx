@@ -1,14 +1,19 @@
 import './App.css'
 import Comment from './components/comment'
+import AddComment from './components/addComment'
+import { useContext } from 'react'
 import getAllComments from '../services/getAllComments'
-import Replie from './components/replies'
+import Context from './context/StaticContext'
 
 function App() {
-  const state = getAllComments()
+  const {comments,setComments} = useContext(Context)
+  getAllComments()
+  console.log(comments)
+
   return (
     <>
-      { state.comments
-      ? state.comments.map(com =>{
+      { comments
+      ? comments.map(com =>{
         return(
 
             <Comment
@@ -27,7 +32,7 @@ function App() {
       : ''
       }
 
-
+      <AddComment/>
 
       <div className="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
