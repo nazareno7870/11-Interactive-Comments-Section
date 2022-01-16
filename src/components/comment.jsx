@@ -9,8 +9,66 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
     const {comments,setComments,user} = useContext(Context)
     const [replie, setreplie] = useState(false);
     const [showModalDelete, setshowModalDelete] = useState(false)
+    const [vote, setVote] = useState(Votes);
 
     const [edit, setedit] = useState(false)
+
+    const handleAddVote=()=>{
+        const newInfoComment = comments.filter(com => com.id === Id)
+
+        if(Votes>=vote &&  newInfoComment[0].vote === undefined || newInfoComment[0].vote === 'down'){
+            setVote(vote+1)
+            newInfoComment[0].score=vote+1
+            
+            const newStateComments = comments.map(com=>{
+                if(com.id===Id && newInfoComment[0].vote === undefined){
+                    return (
+                        {...newInfoComment[0],
+                        vote:'up'}
+                        )
+                }else if(com.id===Id && newInfoComment[0].vote === 'down'){
+                    return (
+                        {...newInfoComment[0],
+                        vote: undefined}
+                        )
+                }else{
+                    return com
+                }
+            })
+
+        setComments(newStateComments)
+    }
+
+    }
+
+    const handleDiscVote=()=>{
+
+        const newInfoComment = comments.filter(com => com.id === Id)
+
+        if(Votes<=vote &&  newInfoComment[0].vote === undefined || newInfoComment[0].vote === 'up'){
+            setVote(vote-1)
+            newInfoComment[0].score=vote-1
+            
+            const newStateComments = comments.map(com=>{
+                if(com.id===Id && newInfoComment[0].vote === undefined){
+                    return (
+                        {...newInfoComment[0],
+                        vote:'down'}
+                        )
+                }else if(com.id===Id && newInfoComment[0].vote === 'up'){
+                    return (
+                        {...newInfoComment[0],
+                        vote: undefined}
+                        )
+                }else{
+                    return com
+                }
+            })
+
+        setComments(newStateComments)
+    }
+
+    }
 
     const handleShowEditForm = ()=>{
         setedit(!edit)
@@ -43,9 +101,9 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
 
         <div className="vote-comment">
             <div className="vote-container">
-                <button>+</button>
-                <h2>{Votes}</h2>
-                <button>-</button>
+                <button onClick={handleAddVote}>+</button>
+                <h2>{vote}</h2>
+                <button onClick={handleDiscVote}>-</button>
             </div>
 
         </div>

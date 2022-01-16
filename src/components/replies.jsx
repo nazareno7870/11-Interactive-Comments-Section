@@ -8,8 +8,89 @@ export default function Replie ({User,Date,Content,Votes,Avatar,replyingTo,Id,Co
     const {user,setComments,comments} = useContext(Context)
     const [replie, setreplie] = useState(false);
     const [showModalDelete, setshowModalDelete] = useState(false)
+    const [vote, setVote] = useState(Votes);
 
     const [edit, setedit] = useState(false)
+
+    const handleAddVote=()=>{
+        const newInfoComment = comments.filter(com => com.id === CommentId)
+        const newInfoReplie = newInfoComment[0].replies.filter(rep => rep.id === Id)
+
+        if(Votes>=vote &&  newInfoReplie[0].vote === undefined || newInfoReplie[0].vote === 'down'){
+            setVote(vote+1)
+            newInfoReplie[0].score=vote+1
+            
+            const newStateReplies = newInfoComment[0].replies.map(com=>{
+                if(com.id===Id && newInfoReplie[0].vote === undefined){
+                    return (
+                        {...newInfoReplie[0],
+                        vote:'up'}
+                        )
+                }else if(com.id===Id && newInfoReplie[0].vote === 'down'){
+                    return (
+                        {...newInfoReplie[0],
+                        vote: undefined}
+                        )
+                }else{
+                    return com
+                }
+            })
+        
+        const newStateComments = comments.map(com=>{
+            if(com.id === CommentId){
+                return ({
+                    ...com,
+                    replies:newStateReplies
+                })
+            }else{
+                return com
+            }
+        })
+        setComments(newStateComments)
+
+    }
+
+    }
+
+    const handleDiscVote=()=>{
+        const newInfoComment = comments.filter(com => com.id === CommentId)
+        const newInfoReplie = newInfoComment[0].replies.filter(rep => rep.id === Id)
+
+        if(Votes<=vote &&  newInfoReplie[0].vote === undefined || newInfoReplie[0].vote === 'up'){
+            setVote(vote-1)
+            newInfoReplie[0].score=vote-1
+            
+            const newStateReplies = newInfoComment[0].replies.map(com=>{
+                if(com.id===Id && newInfoReplie[0].vote === undefined){
+                    return (
+                        {...newInfoReplie[0],
+                        vote:'down'}
+                        )
+                }else if(com.id===Id && newInfoReplie[0].vote === 'up'){
+                    return (
+                        {...newInfoReplie[0],
+                        vote: undefined}
+                        )
+                }else{
+                    return com
+                }
+            })
+        
+        const newStateComments = comments.map(com=>{
+            if(com.id === CommentId){
+                return ({
+                    ...com,
+                    replies:newStateReplies
+                })
+            }else{
+                return com
+            }
+        })
+        setComments(newStateComments)
+
+    }
+
+    }
 
     const handleShowEditForm = ()=>{
         setedit(!edit)
@@ -58,9 +139,9 @@ return(
 
             <div className="vote-comment">
                 <div className="vote-container">
-                    <button>+</button>
-                    <h2>{Votes}</h2>
-                    <button>-</button>
+                <button onClick={handleAddVote}>+</button>
+                <h2>{vote}</h2>
+                <button onClick={handleDiscVote}>-</button>
                 </div>
 
             </div>
