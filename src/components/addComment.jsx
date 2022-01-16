@@ -8,8 +8,7 @@ import Context from '../context/StaticContext'
 
 export default function AddComment ({}){
     const [newComment, setNewComment] = useState('');
-    const {comments,setComments} = useContext(Context)
-
+    const {comments,setComments,user} = useContext(Context)
     const handleSubmit = (e)=>{
         const newId = Math.random()*100
         e.preventDefault()
@@ -21,10 +20,10 @@ export default function AddComment ({}){
             score:0,
             user:{
                 image:{
-                    png:"./images/avatars/image-juliusomo.png",
-                    webp:"./images/avatars/image-juliusomo.webp"
+                    png:user.image.png,
+                    webp:user.image.webp
                 },
-                username:"juliusomo"
+                username:user.username
             }
         }
         setComments([...comments,addComment])

@@ -8,7 +8,6 @@ import Context from './context/StaticContext'
 function App() {
   const {comments,setComments,user} = useContext(Context)
   getState()
-  console.log(user)
 
   return (
     <>

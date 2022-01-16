@@ -63,13 +63,15 @@ h2{
     padding: 0 18px;
 }
 
-.reply{
+.reply,.delete-edit{
     display: flex;
     align-items: center;
     gap: 8px;
     position: absolute;
     right: 16px;
     bottom: 22px;
+}
+.reply{
     cursor: pointer;
 }
 
@@ -95,4 +97,19 @@ span{
     font-weight: 800;
     font-size: 16px;
     color:  var(--Moderate-blue);
+}
+.delete,.edit{
+    display: flex;
+    align-items: center;
+    margin-left: 6px;
+    cursor: pointer;
+
+}
+
+.delete h3{
+    color: var(--Soft-Red);
+    margin-left: 8px;
+}
+.edit h3{
+    margin-left: 8px;
 }
