@@ -1,0 +1,49 @@
+@import '../Variables.css';
+
+
+.form-addComment{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--White);
+    width: 92%;
+    padding: 16px;
+    margin-top: 20px;
+    border-radius: 6px;
+    position: relative;
+    align-items: flex-end;
+}
+
+textarea{
+    grid-area: text;
+    resize: none;
+    height: 100px;
+    width: 100%;
+    border-radius: 6px;
+    border: 2px solid var(--Light-gray);
+    outline: none;
+    padding: 16px 20px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    color: var(--Grayish-Blue);
+}
+textarea::placeholder{
+    font-size: 16px;
+}
+.form-addComment img{
+    width: 32px;
+    position: absolute;
+    bottom: 27px;
+    left:22px;
+}
+.form-addComment button{
+    background-color: var(--Moderate-blue);
+    margin-top: 16px;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+    padding: 16px 34px;
+    color: var(--White);
+    border-radius: 6px;
+    cursor: pointer;
+}
