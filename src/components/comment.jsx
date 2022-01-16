@@ -6,8 +6,9 @@ import AddReplie from './addReplie'
 import EditComment from './editComment'
 
 export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
-    const {user} = useContext(Context)
+    const {comments,setComments,user} = useContext(Context)
     const [replie, setreplie] = useState(false);
+    const [showModalDelete, setshowModalDelete] = useState(false)
 
     const [edit, setedit] = useState(false)
 
@@ -17,6 +18,13 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
 
     const handleShowReplieForm = ()=>{
         setreplie(!replie)
+    }
+
+    const handleDeleteComment =(e)=>{
+        e.preventDefault()
+        let commentUpdate = comments.filter(com => com.id !== Id)
+
+        setComments(commentUpdate)
     }
     
     return(
@@ -46,7 +54,7 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
             {User === user.username
             ?<> 
                 <div className="delete-edit">
-                    <div className="delete">
+                    <div className="delete" onClick={e=> setshowModalDelete(!showModalDelete)}>
                         <img src="./images/icon-delete.svg" alt="Reply Icon" />
                         <h3>Delete</h3>
                     </div>
@@ -107,6 +115,16 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
     : ''
     }
     </div>
+    <div className={"modal-delete "+ showModalDelete}>
+            <div className="modal-container">
+                <h2>Delete comment</h2>
+                <p>Are you sure you want to delete this comment? This will remove the comment and cant be undone.</p>
+                <div className="buttons">
+                    <button onClick={ e=> setshowModalDelete(!showModalDelete) }>NO,CANCEL</button>
+                    <button onClick={handleDeleteComment}>YES,DELETE</button>
+                </div>
+            </div>
+        </div>
     </>
 )
 }
