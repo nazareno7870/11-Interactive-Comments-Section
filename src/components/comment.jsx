@@ -1,12 +1,18 @@
 import './comment.css'
 import Replie from './replies'
-import { useContext } from 'react'
-import Context from '../context/StaticContext'
+import { useContext,useState } from 'react'
+import Context, { CommentsContextProvider } from '../context/StaticContext'
+import AddReplie from './addReplie'
 
-export default function Comment ({User,Date,Content,Votes,Avatar, replies}){
+export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
     const {user} = useContext(Context)
+    const [replie, setreplie] = useState(false);
 
-return(
+    const handleShowReplieForm = ()=>{
+        setreplie(!replie)
+    }
+    
+    return(
     <>
     <div className="comment">
 
@@ -45,12 +51,21 @@ return(
                 </div>
              </>
             :<>
-                <div className="reply">
+                <div className="reply" onClick={handleShowReplieForm}>
                     <img src="./images/icon-reply.svg" alt="Reply Icon" />
                     <h3>Reply</h3>
                 </div>
             </>}
+
     </div>
+    
+    <AddReplie 
+    Visibility={replie}
+    Id={Id}
+    User={User}
+    setreplie={setreplie}
+    />
+    
     <div className="replies">
 
     {replies

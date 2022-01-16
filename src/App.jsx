@@ -7,6 +7,7 @@ import Context from './context/StaticContext'
 
 function App() {
   const {comments,setComments,user} = useContext(Context)
+  console.log(comments)
   getState()
 
   return (
@@ -23,6 +24,7 @@ function App() {
             Votes={com.score}
             Avatar={com.user.image.webp}
             replies={com.replies}
+            Id={com.id}
             />
 
         )

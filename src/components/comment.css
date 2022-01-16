@@ -113,3 +113,9 @@ span{
 .edit h3{
     margin-left: 8px;
 }
+.form-addComment.replie-comment{
+    display: none;
+}
+.form-addComment.replie-comment.true{
+    display: flex;
+}
