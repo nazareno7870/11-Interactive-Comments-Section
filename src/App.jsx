@@ -2,13 +2,13 @@ import './App.css'
 import Comment from './components/comment'
 import AddComment from './components/addComment'
 import { useContext } from 'react'
-import getAllComments from '../services/getAllComments'
+import getState from '../services/getState'
 import Context from './context/StaticContext'
 
 function App() {
-  const {comments,setComments} = useContext(Context)
-  getAllComments()
-  console.log(comments)
+  const {comments,setComments,user} = useContext(Context)
+  getState()
+  console.log(user)
 
   return (
     <>
