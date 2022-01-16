@@ -14,7 +14,7 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
     
     return(
     <>
-    <div className="comment">
+    <div id={Id} className="comment">
 
         <div className="top-comment">
             <img src={Avatar} alt="Avatar" />
@@ -74,6 +74,8 @@ export default function Comment ({Id,User,Date,Content,Votes,Avatar, replies}){
 
             <Replie
                 key={com.id}
+                CommentId={Id}
+                Id={com.id}
                 User={com.user.username}
                 Date={com.createdAt}
                 Content={com.content}
