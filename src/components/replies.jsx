@@ -2,10 +2,17 @@ import './comment.css'
 import { useContext,useState } from 'react'
 import Context from '../context/StaticContext'
 import AddReplie from './addReplie'
+import EditReply from './editReply'
 
 export default function Replie ({User,Date,Content,Votes,Avatar,replyingTo,Id,CommentId}){
     const {user} = useContext(Context)
     const [replie, setreplie] = useState(false);
+
+    const [edit, setedit] = useState(false)
+
+    const handleShowEditForm = ()=>{
+        setedit(!edit)
+    }
 
     const handleShowReplieForm = ()=>{
         setreplie(!replie)
@@ -13,7 +20,7 @@ export default function Replie ({User,Date,Content,Votes,Avatar,replyingTo,Id,Co
 
 return(
     <>
-        <div id={Id} className="container-replie">
+        <div id={Id} className={"container-replie "+!edit}>
 
             <div className="comment replie">
 
@@ -43,7 +50,7 @@ return(
                             <img src="./images/icon-delete.svg" alt="Reply Icon" />
                             <h3>Delete</h3>
                         </div>
-                        <div className="edit">
+                        <div className="edit" onClick={handleShowEditForm}>
                             <img src="./images/icon-edit.svg" alt="Reply Icon" />
                             <h3>Edit</h3>
                         </div>
@@ -59,6 +66,24 @@ return(
             </div>
 
         </div>
+
+        {User === user.username
+            ? <EditReply
+            Id={Id}
+            User={User}
+            Date={Date}
+            Content={Content}
+            Votes={Votes}
+            Avatar={Avatar}
+            Visibility={edit}
+            setedit={setedit}
+            replyingTo={replyingTo}
+            CommentId={CommentId}
+             />
+            :<></>
+        }
+
+
 
         <AddReplie 
         Visibility={replie}

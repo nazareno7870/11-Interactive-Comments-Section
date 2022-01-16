@@ -80,7 +80,7 @@ export default function AddReplie ({Visibility,Id,setreplie,User,set,CommentId})
         <div className="comment-replie">
             <form className={`form-addComment replie-comment ${Visibility} replie`} onSubmit={handleReplietoReplies}>
                 <textarea name="addcomment" id="addcomment" placeholder='Add a comment...' onChange={e=>{setcontentReplie(e.target.value)}} value={contentReplie} ></textarea>
-                <button>SEND</button>
+                <button>REPLY</button>
                 <img src="./images/avatars/image-juliusomo.webp" alt="Avatar" />
             </form>
         </div>
@@ -89,7 +89,7 @@ export default function AddReplie ({Visibility,Id,setreplie,User,set,CommentId})
         return(
             <form className={`form-addComment replie-comment ${Visibility}`} onSubmit={handleReplie}>
                 <textarea name="addcomment" id="addcomment" placeholder='Add a comment...' onChange={e=>{setcontentReplie(e.target.value)}} value={contentReplie} ></textarea>
-                <button>SEND</button>
+                <button>REPLY</button>
                 <img src="./images/avatars/image-juliusomo.webp" alt="Avatar" />
             </form>
     )

@@ -55,3 +55,6 @@ textarea::placeholder{
 .comment.false{
     display: none;
 }
+.container-replie.false{
+    display: none;
+}
